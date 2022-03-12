@@ -75,12 +75,12 @@ function displayAnswer(clickedAnswerId) {
     toggleButtonDisable();
 
     if ( correctAnswer(question, clickedAnswerId) ) { 
-        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-success');
+        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-green');
         rightAnswers++;
         AUDIO_SUCCESS.play();
     } else{ 
-        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-danger');
-        document.getElementById(correctAnswerId).parentNode.classList.add('bg-success');
+        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-red');
+        document.getElementById(correctAnswerId).parentNode.classList.add('bg-green');
         AUDIO_WRONG.play();
     }
 }
@@ -95,8 +95,8 @@ function nextQuestion() {
 
 function resetAnswerButtons(){
     for(let i=1; i<5; i++){
-        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-success');
-        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-danger');
+        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-green');
+        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-red');
     }
 }
 
@@ -105,7 +105,7 @@ function restartQuiz() {
     currentQuestion = 0;
     document.getElementById('card-image').style = 'display:none'; // attribut src ändern
     document.getElementById('end-screen').style = 'display:none'; // auf html-attribut(!) "style" zugreifen (nicht direckt css style attribut in style.css datei?)
-    document.getElementById('question-body').style = '';
+    document.getElementById('question-body').style = 'display: block';
     showQuestion();
 }
 
