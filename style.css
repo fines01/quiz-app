@@ -16,7 +16,8 @@ body {
 }
 
 .logo-icon {
-    height: 3rem;
+    height: 5rem;
+    margin-bottom: 1rem;
 }
 
 .nav-link {
@@ -38,8 +39,12 @@ body {
     padding-top: 12px;
 }
 
+#back-btn {
+    display: none;
+}
+
 .quiz-card {
-    width: 80vw;
+    width: 50vw;
     padding: 1rem;
     margin: 0 4rem;
     border-radius: 6px;

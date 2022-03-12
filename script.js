@@ -72,6 +72,10 @@ function getNextQuestion() {
     for (let i = 1; i < 5; i++) {
         document.getElementById(`answer-${i}`).innerHTML = question[`answer_${i}`];
     }
+    if( currentQuestion > 0 ){
+        // render back-button
+        document.getElementById('back-btn').style.display = 'block';
+    }
 }
 
 // TODO: refactor function
