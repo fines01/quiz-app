@@ -1,5 +1,5 @@
 body {
-    background-color: darkblue;
+    background-color: rgb(147, 147, 153);
 }
 
 .container {
@@ -22,6 +22,57 @@ body {
 }
 
 .card-img-top {
-    height: 13rem;
+    height: 12rem;
     object-fit: cover;
+}
+
+.card-image {
+    display: none;
+}
+
+.answer-card:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.07);
+
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+
+}
+/* #progress-bar {
+    height: 12px;
+    border-radius: 16px;
+    background-color: orange;
+    width: calc();
+    text-align: center;
+    margin: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bolder;
+} */
+
+#end-screen h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* generische Klassen */
+.width-100 {
+    width: 100%;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/* bootstrap classes */
+.bg-success, .bg-danger {
+    color: white;
+}
+
+.progress-bar {
+    border-radius: 0 0 0.25rem 0.25rem;
 }
