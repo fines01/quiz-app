@@ -1,4 +1,0 @@
-### Quiz-App
-
-Zwei Designvorlagen, aber versuchen etwas individuelles draus zu machen, etwas eigenes zu machen. :))
-(Eigene Fragen, ev ein paar (1-2) extra Features, ...)

@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
     <!-- Styles -->
     <!-- Bootstrap -->
     <link
@@ -17,7 +24,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <!-- Google Fonts -->
     <!-- My Styleesheets -->
     <link rel="stylesheet" href="style.css" />
     <!-- JavaScript -->
@@ -27,67 +33,141 @@
   </head>
 
   <body onload="init()">
-
-    <nav class="navbar navbar-light bg-light">
+    <!-- <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">QuizApp</span>
       </div>
-    </nav>
+    </nav> -->
 
-    <div class="container">
+    <main class="d-flex">
 
-      <div class="card quiz-card">
 
-        <img id="card-image" src="img/spacecat.jpg" class="card-img-top" alt="" />
+    <div class="content-left">
 
-        <div id="end-screen" class="card-body" style="display: none">
+      <div class="d-flex flex-column bg-dark text-white sidebar">
+        <span class="fs-4">QuizApp</span>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+           <a href="#" class="nav-link active" aria-current="page">
+            HTML
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+            CSS
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+            JavaScript
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+            All
+            </a>
+          </li>
+        </ul>
+        <hr>
+      </div>
+  <!-- End Sidebar -->
 
-          <h3 class="text-center">Quiz beendet!</h3>
 
-          <div class="text-center">
-            Du hast <b id="right-questions-amount">xyz</b>Fragen von <b class="amount-questions">xyz</b> richtig beantwortet.
+    </div>
+
+    <div class="content-right container">
+      <!-- <div class="container"> -->
+        <div class="card quiz-card">
+          <img
+            id="card-image"
+            src="img/spacecat.jpg"
+            class="card-img-top"
+            alt=""
+          />
+
+          <div id="end-screen" class="card-body" style="display: none">
+            <h3 class="text-center">Quiz beendet!</h3>
+
+            <div class="text-center">
+              Du hast <b id="right-questions-amount">xyz</b>Fragen von
+              <b class="amount-questions">xyz</b> richtig beantwortet.
+            </div>
+
+            <div class="row">
+              <button
+                id="restart-btn"
+                class="btn btn-primary"
+                onclick="restartQuiz()"
+              >
+                Nochmal spielen
+              </button>
+            </div>
           </div>
 
-          <div class="row">
-            <button id="restart-btn" class="btn btn-primary" onclick="restartQuiz()">Nochmal spielen</button>
+          <div class="progress">
+            <div
+              id="progress-bar"
+              class="progress-bar"
+              role="progressbar"
+              style="width: 25%"
+            >
+              0%
+            </div>
           </div>
 
-        </div>
+          <div id="question-body" class="card-body">
+            <h5 id="question-title" class="card-title">Frage?</h5>
+            <!-- answer-cards -->
 
-        <div class="progress">
-          <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 25%;" >0%</div>
-        </div>
+            <div
+              onclick="displayAnswer('answer-1')"
+              class="card mb-2 answer-card"
+            >
+              <div id="answer-1" class="card-body">Antwort 1</div>
+            </div>
 
-        <div id="question-body" class="card-body">
-          <h5 id="question-title" class="card-title">Frage?</h5>
-          <!-- answer-cards -->
+            <div
+              onclick="displayAnswer('answer-2')"
+              class="card mb-2 answer-card"
+            >
+              <div id="answer-2" class="card-body">Antwort 2</div>
+            </div>
 
-          <div onclick="displayAnswer('answer-1')" class="card mb-2 answer-card">
-            <div id="answer-1" class="card-body">Antwort 1</div>
-          </div>
+            <div
+              onclick="displayAnswer('answer-3')"
+              class="card mb-2 answer-card"
+            >
+              <div id="answer-3" class="card-body">Antwort 3</div>
+            </div>
 
-          <div onclick="displayAnswer('answer-2')" class="card mb-2 answer-card">
-            <div id="answer-2" class="card-body">Antwort 2</div>
-          </div>
+            <div
+              onclick="displayAnswer('answer-4')"
+              class="card mb-2 answer-card"
+            >
+              <div id="answer-4" class="card-body">Antwort 4</div>
+            </div>
 
-          <div onclick="displayAnswer('answer-3')" class="card mb-2 answer-card">
-            <div id="answer-3" class="card-body">Antwort 3</div>
-          </div>
-
-          <div onclick="displayAnswer('answer-4')" class="card mb-2 answer-card">
-            <div id="answer-4" class="card-body">Antwort 4</div>
-          </div>
-
-          <div class="question-footer">
+            <div class="question-footer">
               <span>
-                  <b id="question-number">1</b> von <b class="amount-questions">5</b> Fragen
+                <b id="question-number">1</b> von
+                <b class="amount-questions">5</b> Fragen
               </span>
 
-              <button disabled="true" id="next-btn" class="btn btn-primary" onclick="nextQuestion()" >Nächste Frage</button>
+              <button
+                disabled="true"
+                id="next-btn"
+                class="btn btn-primary"
+                onclick="nextQuestion()"
+              >
+                Nächste Frage
+              </button>
+            </div>
           </div>
-
         </div>
-      </div>
+      <!-- </div> -->
+      <!-- END Container -->
     </div>
+    </main>
   </body>
 </html>
