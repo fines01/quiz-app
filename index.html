@@ -40,55 +40,50 @@
     </nav> -->
 
     <main class="d-flex">
-
-
-    <!-- <div class="content-left"> -->
+      <!-- <div class="content-left"> -->
 
       <div class="d-flex flex-column text-white sidebar">
-        <div class="nav-logo d-flex flex-column align-items-center justify-content-center">
-          <img class="logo-icon" src="img/head.png" alt="quiz-app logo">
+        <div
+          class="nav-logo d-flex flex-column align-items-center justify-content-center"
+        >
+          <img class="logo-icon" src="img/head.png" alt="quiz-app logo" />
           <span class="fs-4">QuizApp</span>
         </div>
-        <hr>
+        <hr />
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-           <a href="#" class="nav-link active" aria-current="page">
-            HTML
-            </a>
+            <a href="#" class="nav-link active" aria-current="page"> HTML </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-            CSS
-            </a>
+            <a href="#" class="nav-link text-white"> CSS </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-            JavaScript
-            </a>
+            <a href="#" class="nav-link text-white"> JavaScript </a>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
-            All Questions
-            </a>
+            <a href="#" class="nav-link text-white"> All Questions </a>
           </li>
         </ul>
-        <hr>
+        <hr />
       </div>
-  <!-- End Sidebar -->
+      <!-- End Sidebar -->
 
+      <!-- </div> -->
 
-    <!-- </div> -->
+      <div class="content-right container">
 
-    <div class="content-right container">
-      <!-- <div class="container"> -->
+        <!-- bootstrap card -->
         <div class="card quiz-card">
+          <!-- card-image -->
           <img
             id="card-image"
             src="img/spacecat.jpg"
             class="card-img-top"
             alt=""
           />
+          <!-- END card-img -->
 
+          <!-- end - screen -->
           <div id="end-screen" class="card-body" style="display: none">
             <h3 class="text-center">Quiz beendet!</h3>
 
@@ -107,56 +102,57 @@
               </button>
             </div>
           </div>
+          <!-- END: end -  screen -->
 
-          <div class="progress">
+          <!-- progress - bar -->
+          <div id="progress" class="progress">
             <div
               id="progress-bar"
               class="progress-bar"
               role="progressbar"
-              style="width: 25%"
+              style="width: 5%"
             >
               0%
             </div>
           </div>
+          <!-- END progress - bar -->
 
+          <!-- question - card -->
           <div id="question-body" class="card-body">
+
             <h5 id="question-title" class="card-title">Frage?</h5>
             <!-- answer-cards -->
-
             <div
               onclick="displayAnswer('answer-1')"
               class="card mb-2 answer-card"
             >
               <div id="answer-1" class="card-body">Antwort 1</div>
             </div>
-
             <div
               onclick="displayAnswer('answer-2')"
               class="card mb-2 answer-card"
             >
               <div id="answer-2" class="card-body">Antwort 2</div>
             </div>
-
             <div
               onclick="displayAnswer('answer-3')"
               class="card mb-2 answer-card"
             >
               <div id="answer-3" class="card-body">Antwort 3</div>
             </div>
-
             <div
               onclick="displayAnswer('answer-4')"
               class="card mb-2 answer-card"
             >
               <div id="answer-4" class="card-body">Antwort 4</div>
+              <!-- END: answer-cards -->
             </div>
-
+            <!--  -->
             <div class="question-footer">
               <span>
                 <b id="question-number">1</b> von
                 <b class="amount-questions">5</b> Fragen
               </span>
-
               <button
                 disabled="true"
                 id="next-btn"
@@ -167,10 +163,12 @@
               </button>
             </div>
           </div>
+          <!-- END: question-card -->
         </div>
-      <!-- </div> -->
-      <!-- END Container -->
-    </div>
+        <!-- </div> -->
+        <!-- END Container -->
+      </div>
+      <!-- END content - right -->
     </main>
   </body>
 </html>

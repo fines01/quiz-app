@@ -40,7 +40,6 @@ body {
 
 .quiz-card {
     width: 80vw;
-    height: 70vh;
     padding: 1rem;
     margin: 0 4rem;
     border-radius: 6px;
@@ -70,16 +69,6 @@ body {
     margin: 1.5rem 0;
 
 }
-/* #progress-bar {
-    height: 12px;
-    border-radius: 16px;
-    background-color: orange;
-    width: calc();
-    text-align: center;
-    margin: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: bolder;
-} */
 
 #end-screen h3 {
     font-size: 2rem;
