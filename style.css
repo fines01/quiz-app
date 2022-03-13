@@ -65,7 +65,8 @@ body {
 }
 
 .quiz-card {
-    width: 50vw;
+    min-width: 50vw;
+    max-width: 60vw;
     padding: 1rem;
     margin: 0 4rem;
     border-radius: 6px;
