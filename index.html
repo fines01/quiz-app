@@ -65,6 +65,11 @@
           </li>
         </ul>
         <hr />
+        <div class="nav-footer">
+          <span>&copy; i.f. 2022</span>
+          <br>
+          <span>DeveloperAkademie</span>
+        </div>
       </div>
       <!-- End Sidebar -->
 
@@ -123,25 +128,25 @@
             <h5 id="question-title" class="card-title">Frage?</h5>
             <!-- answer-cards -->
             <div
-              onclick="displayAnswer('answer-1')"
+              onclick="checkAnswer('answer-1')"
               class="card mb-2 answer-card"
             >
               <div id="answer-1" class="card-body">Antwort 1</div>
             </div>
             <div
-              onclick="displayAnswer('answer-2')"
+              onclick="checkAnswer('answer-2')"
               class="card mb-2 answer-card"
             >
               <div id="answer-2" class="card-body">Antwort 2</div>
             </div>
             <div
-              onclick="displayAnswer('answer-3')"
+              onclick="checkAnswer('answer-3')"
               class="card mb-2 answer-card"
             >
               <div id="answer-3" class="card-body">Antwort 3</div>
             </div>
             <div
-              onclick="displayAnswer('answer-4')"
+              onclick="checkAnswer('answer-4')"
               class="card mb-2 answer-card"
             >
               <div id="answer-4" class="card-body">Antwort 4</div>
@@ -149,13 +154,13 @@
             </div>
             <!--  -->
             <div class="question-footer">
-              <button
+              <!-- <button
                 id="back-btn"
                 class="btn btn-primary"
                 onclick="lastQuestion()"
               >
                 Letzte Frage
-              </button>
+              </button> -->
               <span>
                 <b id="question-number">1</b> von
                 <b class="amount-questions">5</b> Fragen

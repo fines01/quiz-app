@@ -24,6 +24,13 @@ body {
     margin: 1rem;
 }
 
+.nav-footer {
+    color: rgb(117, 118, 121);
+    font-size: 0.8rem;
+    margin: 1rem;
+    text-align: center;
+}
+
 .container {
     min-height: 100vh;
     display: flex;
@@ -98,10 +105,14 @@ body {
     border-radius: 0 0 0.25rem 0.25rem;
 }
 
-.bg-red{
+.bg-wrong-answer{
     background-color: rgb(201, 129, 129);
 }
 
-.bg-green{
+.bg-right-answer{
     background-color: rgb(134, 184, 134);
+}
+
+.prevent-click {
+    pointer-events: none;
 }

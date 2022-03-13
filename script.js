@@ -1,13 +1,11 @@
-let currentQuestion = 0; //startwert
+let currentQuestion = 0;
 let rightAnswers = 0;
 let AUDIO_SUCCESS = new Audio('audio/success.mp3'); // od nur String mit Pfad hier speichern und eig Fkt. playAudio('path');
 let AUDIO_WRONG = new Audio('audio/wrong1.mp3');
 
 function init(){
-
     displayQuestionCount();
     showQuestion();
-
 }
 
 function displayQuestionCount() {
@@ -30,13 +28,9 @@ function gameOver() {
     return currentQuestion >= questions.length;
 }
 
-function correctAnswer(question, clickedAnswer) {
-    let clickedAnswerNumber = clickedAnswer.slice(-1); // cut out last character (index -1) of a string
-    return question["right_answer"] == clickedAnswerNumber;
-}
-
 function showEndScreen() {
-     document.getElementById('end-screen').style = ''; // auf html-attribut(!) "style" zugreifen (nicht direckt css style attribut in style.css datei?)
+     document.getElementById('end-screen').style = ''; // auf html-attribut(!) "style" zugreifen
+     document.getElementById('right-questions-amount').innerHTML = rightAnswers;
      document.getElementById('question-body').style = 'display: none';
      //document.getElementById('card-image').src = 'img/spacecat.jpg'; // attribut src ändern
      document.getElementById('card-image').style = 'display: block'
@@ -65,74 +59,90 @@ function resetProgressBar() {
 function getNextQuestion() {
     let question = questions[currentQuestion];
     document.getElementById('question-number').innerHTML = currentQuestion + 1;
-    document.getElementById('right-questions-amount').innerHTML = rightAnswers;
     //render question title
     document.getElementById('question-title').innerHTML = question['question'];
     // render answer - options
     for (let i = 1; i < 5; i++) {
         document.getElementById(`answer-${i}`).innerHTML = question[`answer_${i}`];
     }
-    if( currentQuestion > 0 ){
-        // render back-button
-        document.getElementById('back-btn').style.display = 'block';
-    }
+    // enable clicking on answer btns
+    enableClickability();
 }
 
 // TODO: refactor function
-function displayAnswer(clickedAnswerId) {
-    let question = questions[currentQuestion];
-    let correctAnswerId = `answer-${question['right_answer']}`;
+function checkAnswer(clickedAnswerId) {
     let nextBtn = document.getElementById('next-btn');
-    
-    if ( correctAnswer(question, clickedAnswerId) ) { 
-        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-green');
-        AUDIO_SUCCESS.play();
-        rightAnswers++;
-    } else { 
-        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-red');
-        document.getElementById(correctAnswerId).parentNode.classList.add('bg-green');
-        AUDIO_WRONG.play();
-    }
+   
+    // animate false/correct answer selection
+    displayCorrectAnswer(clickedAnswerId);
     //update progress-bar
     updateProgressBar();
     //enable next-button
     nextBtn.disabled = false;
-    // TODO: disable possibility to select an answer again
-    // ...
-    //TODO: progr bar only shows every second question? --> wegen "overflow: hidden" in BS-Klasse .progress !! Kontainer tw zu klein!
+    //disable possibility to select an answer on the same question again
+    enableClickability(false);
+}
+
+// disable/ enable possibility to click answer buttons:
+function enableClickability(enable = true) {
+    // toggleClickability() oder so?
+    let answerButtons = document.getElementsByClassName('answer-card');
+    for (let i=0; i<4; i++){
+        if (enable){
+            answerButtons[i].classList.remove('prevent-click');
+        } else {
+            answerButtons[i].classList.add('prevent-click');
+        }
+    }
+}
+
+function displayCorrectAnswer(clickedAnswerId) {
+     let clickedAnswerNumber = clickedAnswerId.slice(-1); // cut out last character (index -1) of a string
+     let question = questions[currentQuestion];
+     let answerIsTrue = ( question["right_answer"] == clickedAnswerNumber );
+     let correctAnswerId = `answer-${question['right_answer']}`;
+
+    if (answerIsTrue) {
+        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-right-answer');
+        AUDIO_SUCCESS.play();
+        rightAnswers++;
+    } else {
+        document.getElementById(correctAnswerId).parentNode.classList.add('bg-right-answer');
+        document.getElementById(clickedAnswerId).parentNode.classList.add('bg-wrong-answer');
+        AUDIO_WRONG.play();
+    }
 }
 
 function nextQuestion() {
     currentQuestion++;
     document.getElementById('next-btn').disabled = true;
-    //toggleButtonDisable();
     resetAnswerButtons();
     showQuestion();
 }
 
+// function lastQuestion() {
+//     //TODO: save given answers to displayAnswers and show them when going back for a given round)
+// }
+
 function resetAnswerButtons(){
     for(let i=1; i<5; i++){
-        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-green');
-        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-red');
+        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-right-answer');
+        document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-wrong-answer');
     }
 }
 
 function restartQuiz() {
+    // reset variables:
     rightAnswers = 0;
     currentQuestion = 0;
-    document.getElementById('card-image').style = 'display:none'; // attribut src ändern
-    document.getElementById('end-screen').style = 'display:none'; // auf html-attribut(!) "style" zugreifen (nicht direckt css style attribut in style.css datei?)
-    document.getElementById('question-body').style = 'display: block';
-    document.getElementById('progress').style.display = '';
+
     resetProgressBar();
     showQuestion();
-}
-
-function toggleButtonDisable() {
-    let nextBtn = document.getElementById('next-btn');
-    if (nextBtn.disabled){
-        nextBtn.disabled = false;
-    } else {
-        nextBtn.disabled = true;
-    }
+    enableClickability();
+    
+    // render quiz-card 
+    document.getElementById('card-image').style = 'display:none'; // attribut src ändern
+    document.getElementById('end-screen').style = 'display:none'; // auf html-attribut(!) "style" zugreifen
+    document.getElementById('question-body').style = 'display: block';
+    document.getElementById('progress').style.display = '';
 }
