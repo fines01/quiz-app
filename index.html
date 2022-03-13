@@ -41,8 +41,11 @@
 
     <main class="d-flex">
       <!-- <div class="content-left"> -->
+      
+        <!-- toggle menu button for mobile views -->
+        <img id="menu" class="menu-icon" onclick="toggleMenu()" src="img/menu-white.png" alt="menu button">
 
-      <div class="d-flex flex-column text-white sidebar">
+        <div id="sidebar" class="sidebar">
         <div
           class="nav-logo d-flex flex-column align-items-center justify-content-center"
         >
@@ -154,13 +157,6 @@
             </div>
             <!--  -->
             <div class="question-footer">
-              <!-- <button
-                id="back-btn"
-                class="btn btn-primary"
-                onclick="lastQuestion()"
-              >
-                Letzte Frage
-              </button> -->
               <span>
                 <b id="question-number">1</b> von
                 <b class="amount-questions">5</b> Fragen

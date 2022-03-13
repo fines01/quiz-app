@@ -1,6 +1,6 @@
 let currentQuestion = 0;
 let rightAnswers = 0;
-let AUDIO_SUCCESS = new Audio('audio/success.mp3'); // od nur String mit Pfad hier speichern und eig Fkt. playAudio('path');
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
 let AUDIO_WRONG = new Audio('audio/wrong1.mp3');
 
 function init(){
@@ -67,9 +67,10 @@ function getNextQuestion() {
     }
     // enable clicking on answer btns
     enableClickability();
+    // stop audio
+    stopAudio();
 }
 
-// TODO: refactor function
 function checkAnswer(clickedAnswerId) {
     let nextBtn = document.getElementById('next-btn');
    
@@ -83,7 +84,14 @@ function checkAnswer(clickedAnswerId) {
     enableClickability(false);
 }
 
-// disable/ enable possibility to click answer buttons:
+function nextQuestion() {
+    currentQuestion++;
+    document.getElementById('next-btn').disabled = true;
+    resetAnswerButtons();
+    showQuestion();
+}
+
+// disable/enable pointer events on answer-buttons:
 function enableClickability(enable = true) {
     // toggleClickability() oder so?
     let answerButtons = document.getElementsByClassName('answer-card');
@@ -113,22 +121,19 @@ function displayCorrectAnswer(clickedAnswerId) {
     }
 }
 
-function nextQuestion() {
-    currentQuestion++;
-    document.getElementById('next-btn').disabled = true;
-    resetAnswerButtons();
-    showQuestion();
-}
-
-// function lastQuestion() {
-//     //TODO: save given answers to displayAnswers and show them when going back for a given round)
-// }
-
 function resetAnswerButtons(){
     for(let i=1; i<5; i++){
         document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-right-answer');
         document.getElementById(`answer-${i}`).parentNode.classList.remove('bg-wrong-answer');
     }
+}
+
+function stopAudio() {
+    AUDIO_SUCCESS.pause();
+    AUDIO_SUCCESS.currentTime = 0;
+
+    AUDIO_WRONG.pause();
+    AUDIO_WRONG.currentTime = 0;
 }
 
 function restartQuiz() {
@@ -145,4 +150,9 @@ function restartQuiz() {
     document.getElementById('end-screen').style = 'display:none'; // auf html-attribut(!) "style" zugreifen
     document.getElementById('question-body').style = 'display: block';
     document.getElementById('progress').style.display = '';
+}
+
+function toggleMenu() {
+    let menu = document.getElementById('sidebar');
+    menu.classList.toggle('show-sidebar');
 }
