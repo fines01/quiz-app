@@ -45,7 +45,7 @@ function updateProgressBar() {
     percent = Math.round(percent);
     // update progress-bar
     progressBar.innerHTML = `${percent} %`;
-    progressBar.style.width = `${percent}%` //auf css style attr zureifen vs html attribut?? // oder: style = 'width: ${}%'
+    progressBar.style.width = `${percent}%`
 }
 
 function resetProgressBar() {
@@ -74,7 +74,7 @@ function getNextQuestion() {
 function checkAnswer(clickedAnswerId) {
     let nextBtn = document.getElementById('next-btn');
    
-    // animate false/correct answer selection
+    // animate false/correct answer choice
     displayCorrectAnswer(clickedAnswerId);
     //update progress-bar
     updateProgressBar();
@@ -93,7 +93,6 @@ function nextQuestion() {
 
 // disable/enable pointer events on answer-buttons:
 function enableClickability(enable = true) {
-    // toggleClickability() oder so?
     let answerButtons = document.getElementsByClassName('answer-card');
     for (let i=0; i<4; i++){
         if (enable){
